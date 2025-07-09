@@ -16,7 +16,7 @@ from transformers import AutoProcessor, AutoModelForVision2Seq
 from peft import PeftModel
 
 # 本地模型路径配置
-LOCAL_MODEL_PATH = r".\models--HuggingFaceTB--SmolVLM-Instruct\snapshots\81cd9a775a4d644f2faf4e7becff4559b46b14c7"
+LOCAL_MODEL_PATH = "./models--HuggingFaceTB--SmolVLM-Instruct/snapshots/81cd9a775a4d644f2faf4e7becff4559b46b14c7"
 
 
 def optimize_for_green_attention(image):
