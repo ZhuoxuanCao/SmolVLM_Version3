@@ -346,8 +346,3 @@ if __name__ == "__main__":
 
 
 
-
-
-
-# 测试用
-# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_init_2obj.jsonl --output ./predictions_2cube/on_and/predictions_img_init_2obj_v4.jsonl --image_dir ./image_test_batch/image_init_2obj --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
