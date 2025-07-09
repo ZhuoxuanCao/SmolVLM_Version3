@@ -1,7 +1,7 @@
-# smolvlm_finetuned_batch_infer.py
+# smolvlm_finetuned_batch_infer_local.py
 """
-SmolVLM 微调模型批量图片推理脚本 - 优化版本，添加格式输出最优参数和HSV预处理
-该脚本只进行方块数量推理
+SmolVLM 微调模型批量图片推理脚本 - 使用本地权重版本
+该脚本只进行方块数量推理，使用本地存储的模型权重
 """
 
 import argparse
@@ -14,6 +14,9 @@ import numpy as np
 import cv2
 from transformers import AutoProcessor, AutoModelForVision2Seq
 from peft import PeftModel
+
+# 本地模型路径配置
+LOCAL_MODEL_PATH = r".\models--HuggingFaceTB--SmolVLM-Instruct\snapshots\81cd9a775a4d644f2faf4e7becff4559b46b14c7"
 
 
 def optimize_for_green_attention(image):
@@ -59,16 +62,20 @@ def optimize_for_green_attention(image):
     return processed_image
 
 
-def load_model(model_name, adapter_path=None):
-    """加载SmolVLM模型和处理器 - 支持微调模型"""
+def load_model(adapter_path=None):
+    """加载SmolVLM模型和处理器 - 使用本地权重"""
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"使用设备: {device}")
-    print(f"正在加载基础模型: {model_name}")
+    print(f"正在加载本地模型: {LOCAL_MODEL_PATH}")
 
-    # 初始化处理器和模型
-    processor = AutoProcessor.from_pretrained(model_name)
+    # 检查本地模型路径是否存在
+    if not os.path.exists(LOCAL_MODEL_PATH):
+        raise FileNotFoundError(f"本地模型路径不存在: {LOCAL_MODEL_PATH}")
+
+    # 从本地路径加载处理器和模型
+    processor = AutoProcessor.from_pretrained(LOCAL_MODEL_PATH)
     model = AutoModelForVision2Seq.from_pretrained(
-        model_name,
+        LOCAL_MODEL_PATH,
         torch_dtype=torch.bfloat16,
         _attn_implementation="eager",  # 使用eager attention避免flash_attn依赖
     )
@@ -76,6 +83,8 @@ def load_model(model_name, adapter_path=None):
     # 如果提供了adapter路径，加载微调权重
     if adapter_path:
         print(f"正在加载LoRA适配器: {adapter_path}")
+        if not os.path.exists(adapter_path):
+            raise FileNotFoundError(f"LoRA适配器路径不存在: {adapter_path}")
         model = PeftModel.from_pretrained(model, adapter_path)
         print("LoRA适配器加载完成！")
 
@@ -246,13 +255,10 @@ def batch_inference(model, processor, device, input_file, output_file, image_dir
 
 
 def main():
-    parser = argparse.ArgumentParser(description="SmolVLM 微调模型批量图片推理脚本")
+    parser = argparse.ArgumentParser(description="SmolVLM 微调模型批量图片推理脚本 - 使用本地权重")
     parser.add_argument('--input', type=str, required=True, help='输入JSONL文件路径')
     parser.add_argument('--output', type=str, required=True, help='输出JSONL文件路径')
     parser.add_argument('--image_dir', type=str, required=True, help='图片文件夹路径')
-    parser.add_argument('--model', type=str,
-                        default="HuggingFaceTB/SmolVLM-Instruct",
-                        help='基础模型名称 (可选: HuggingFaceTB/SmolVLM-256M-Instruct 或 HuggingFaceTB/SmolVLM-500M-Instruct 或 HuggingFaceTB/SmolVLM-Instruct)')
 
     parser.add_argument('--adapter_path', type=str,
                         help='LoRA适配器路径 (如果不提供，则使用原始模型)')
@@ -287,21 +293,21 @@ def main():
         if output_dir and not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
-        # 加载模型（一次性加载） - 支持微调模型
-        model, processor, device = load_model(args.model, args.adapter_path)
+        # 加载模型（一次性加载） - 使用本地权重
+        model, processor, device = load_model(args.adapter_path)
 
         # 执行批量推理
         print(f"\n开始批量推理...")
         print(f"输入文件: {args.input}")
         print(f"输出文件: {args.output}")
         print(f"图片目录: {args.image_dir}")
-        print(f"基础模型: {args.model}")
+        print(f"本地模型路径: {LOCAL_MODEL_PATH}")
         if args.adapter_path:
             print(f"LoRA适配器: {args.adapter_path}")
         else:
             print("LoRA适配器: 未使用 (使用原始模型)")
         print(f"最大生成tokens: {args.max_new_tokens}")
-        print(f"格式输出优化: 已启用 (do_sample=False, repetition_penalty=1.1, num_beams=2)")
+        print(f"格式输出优化: 已启用 (do_sample=False, repetition_penalty=1.2, num_beams=2)")
 
         print("-" * 50)
 
@@ -320,7 +326,9 @@ def main():
 if __name__ == "__main__":
     main()
 
-# 使用示例：
+
+
+
 
 # 使用原始模型（不使用微调权重）
 # python smolvlm_batch_infer_qlora.py --input ./annotations/annotations_img_test.jsonl --output ./predictions_v2/predictions_img_test_original.jsonl --image_dir ./image_test_batch/image_test
