@@ -1,5 +1,6 @@
 models--HuggingFaceTB--SmolVLM-Instruct/
 output_smolvlm_lora/
+Slurm/
 
 
 

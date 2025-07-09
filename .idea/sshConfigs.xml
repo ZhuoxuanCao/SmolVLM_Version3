@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="caozh@ruche.mesocentre.universite-paris-saclay.fr" id="9c6e3491-9dc5-4da8-9ac4-ff59a199c22a" port="22" customName="ruche_somlvlm" nameFormat="CUSTOM" username="caozh" useOpenSSHConfig="true">
+        <option name="customName" value="ruche_somlvlm" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

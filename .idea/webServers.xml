@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5db83451-d1f3-47b1-bc0b-6003a46d3743" name="ruhce_smolvlm">
+        <fileTransfer accessType="SFTP" host="caozh@ruche.mesocentre.universite-paris-saclay.fr" port="22" sshConfigId="9c6e3491-9dc5-4da8-9ac4-ff59a199c22a" sshConfig="ruche_somlvlm">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

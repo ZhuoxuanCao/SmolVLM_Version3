@@ -12,11 +12,11 @@ accelerate==0.30.1
 datasets==2.19.1
 huggingface_hub==0.30.1
 
-qwen-omni-utils[decord]
 
 # ---- LoRA  ----
 peft==0.10.0
-bitsandbytes==0.43.1
+bitsandbytes==0.41.3
+triton==2.1.0
 
 # ---- base ----
 numpy==1.26.4
