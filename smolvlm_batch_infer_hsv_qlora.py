@@ -188,7 +188,7 @@ def batch_inference(model, processor, device, input_file, output_file, image_dir
 
     # Part1，目标数量识别
 
-    prompt = "How many objects are there in the image? Only answer with a number."
+    # prompt = "How many objects are there in the image? Only answer with a number."
 
     ###################################################################################################
     # Part2，相对位置关系识别，堆叠或是分开
@@ -232,7 +232,7 @@ def batch_inference(model, processor, device, input_file, output_file, image_dir
     # """
 
 
-    # prompt = "This image shows the workspace before a robot arm performs a grasping task. There are exactly two objects in the workspace. Please describe the color of each object and their spatial relationship.(for example, whether they are stacked or separated, and which one is on top if they are stacked)."
+    prompt = "This image shows the workspace before a robot arm performs a grasping task. There are exactly two objects in the workspace. Please describe the color of each object and their spatial relationship.(for example, whether they are stacked or separated, and which one is on top if they are stacked)."
 
 
     #
@@ -403,7 +403,7 @@ if __name__ == "__main__":
 # python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_test_2obj.jsonl --output ./predictions_2cube/predictions_img_test_2obj_hsv_v5.jsonl --image_dir ./image_test_batch/image_test_2obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
 
 # img_init 启用HSV预处理模式 + 微调模型
-# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_init_2obj.jsonl --output ./predictions_2cube/num_obj/predictions_img_init_2obj_v2.jsonl --image_dir ./image_test_batch/image_init_2obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
+# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_init_2obj.jsonl --output ./predictions_2cube/predictions_img_init_2obj_v1.jsonl --image_dir ./image_test_batch/image_init_2obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
 
 
 
@@ -412,4 +412,4 @@ if __name__ == "__main__":
 
 
 # 测试用
-# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_init_2obj.jsonl --output ./predictions_2cube/on_and/predictions_img_init_2obj_v4.jsonl --image_dir ./image_test_batch/image_init_2obj --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
+# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_test_2obj.jsonl --output ./predictions_2cube/predictions_img_test_2obj_v1.jsonl --image_dir ./image_test_batch/image_test_2obj --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1

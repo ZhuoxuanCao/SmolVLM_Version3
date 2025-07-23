@@ -1,8 +1,9 @@
 models--HuggingFaceTB--SmolVLM-Instruct/
 output_smolvlm_lora/
 Slurm/
-
-
+image_test_batch/
+image_test_single/
+models/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
