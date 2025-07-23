@@ -232,7 +232,8 @@ def batch_inference(model, processor, device, input_file, output_file, image_dir
     # """
 
 
-    prompt = "This image shows the workspace before a robot arm performs a grasping task. There are exactly two objects in the workspace. Please describe the color of each object and their spatial relationship.(for example, whether they are stacked or separated, and which one is on top if they are stacked)."
+    # prompt = "This image shows the workspace before a robot arm performs a grasping task. There are exactly two objects in the workspace. Please describe the color of each object and their spatial relationship.(for example, whether they are stacked or separated, and which one is on top if they are stacked)."
+    prompt = "This image shows the workspace before a robot arm performs a grasping task. There are exactly two objects! Please describe the color of each object and their spatial relationship.(for example, whether they are stacked or separated, and which one is on top if they are stacked)."
 
 
     #
