@@ -5,7 +5,7 @@ cube_parser_v3_fixed.py
 =======================
 使用v2的完整正则逻辑 + LLM备用解析
 用法：
-python cube_parser_v3.py --input ./predictions_2cube/predictions_img_init_2obj_v1.jsonl --output cube_parser_v3_fixed.jsonl --model_path ./models/mistral-7b-instruct-v0.2.Q4_K_M.gguf --n_gpu_layers 30
+python cube_parser_v3.py --input ./predictions_2cube/predictions_img_init_2obj_v2.jsonl --output cube_parser_v4_fixed.jsonl --model_path ./models/mistral-7b-instruct-v0.2.Q4_K_M.gguf --n_gpu_layers 30
 """
 import re
 import json
