@@ -117,5 +117,14 @@ if __name__ == "__main__":
 # 使用示例:
 # python model_infer_single.py --image ./image_test_single/BlueUp2.jpg --prompt "描述这个图片"
 """
+2cube
 python smolvlm_single_infer.py --image ./image_test_single/red_and_blue_0123.jpg --prompt "This image shows the workspace before a robot arm performs a grasping task. There are exactly two objects in the workspace. Please describe the color of each object and their spatial relationship (for example, whether they are stacked or separated, and which one is on top if they are stacked)." --model HuggingFaceTB/SmolVLM-Instruct
+"""
+
+"""
+3cube
+python smolvlm_single_infer.py --image ./image_test_single/pyramid_green_on_red_and_blue_0109.jpg --prompt "This image shows the workspace before a robot arm performs a grasping task. There are exactly three objects in the workspace. Please describe the color of each object and their spatial relationship (for example, whether they are stacked, arranged in a pyramid, or separated, and which one is on top or at the bottom if they are stacked)." --model HuggingFaceTB/SmolVLM-Instruct
+
+python smolvlm_single_infer.py --image ./image_test_single/red_and_green_and_blue_0001.jpg --prompt "  " --model HuggingFaceTB/SmolVLM-Instruct
+
 """

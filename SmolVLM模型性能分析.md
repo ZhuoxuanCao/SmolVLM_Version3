@@ -306,3 +306,8 @@ prompt = "This image shows the workspace before a robot arm performs a grasping 
 | **red_and_green**  |      78      |
 |  **red_on_blue**   |      98      |
 |  **red_on_green**  |     100      |
+
+**这俩现在都还可以，暂时就使用这个，作为我们当前的基准，2025/07/25**
+
+## 4. 三个方块，相对位置关系识别
+
