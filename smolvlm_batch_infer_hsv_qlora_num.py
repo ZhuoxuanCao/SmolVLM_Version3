@@ -341,11 +341,11 @@ if __name__ == "__main__":
 
 
 # img_init 启用HSV预处理模式 + 微调模型
-# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_init_1obj.jsonl --output ./predictions_1cube/num_obj/predictions_img_init_1obj_v3.jsonl --image_dir ./image_test_batch/image_init_1obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
+# python smolvlm_batch_infer_hsv_qlora_num.py --input ./annotations/annotations_img_init_2obj.jsonl --output ./predictions_2cube/num_obj/predictions_img_init_2obj_v4.jsonl --image_dir ./image_test_batch/image_init_2obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V5
 
 # img_all 启用HSV预处理模式 + 微调模型
-# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_2obj.jsonl --output ./predictions_2cube/num_obj/predictions_img_2obj_v4.jsonl --image_dir ./image_test_batch/image_2obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
+# python smolvlm_batch_infer_hsv_qlora_num.py --input ./annotations/annotations_img_2obj.jsonl --output ./predictions_2cube/num_obj/predictions_img_2obj_v4.jsonl --image_dir ./image_test_batch/image_2obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
 
 # img_all 启用HSV预处理模式 + 初始模型
-# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_2obj.jsonl --output ./predictions_2cube/num_obj/predictions_img_2obj_v1.jsonl --image_dir ./image_test_batch/image_2obj  --enable_hsv_preprocessing
+# python smolvlm_batch_infer_hsv_qlora_num.py --input ./annotations/annotations_img_2obj.jsonl --output ./predictions_2cube/num_obj/predictions_img_2obj_v1.jsonl --image_dir ./image_test_batch/image_2obj  --enable_hsv_preprocessing
 
