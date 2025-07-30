@@ -404,7 +404,7 @@ if __name__ == "__main__":
 # python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_test_2obj.jsonl --output ./predictions_2cube/predictions_img_test_2obj_hsv_v5.jsonl --image_dir ./image_test_batch/image_test_2obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
 
 # img_init 启用HSV预处理模式 + 微调模型
-# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_init_2obj.jsonl --output ./predictions_2cube/predictions_img_init_2obj_v3.jsonl --image_dir ./image_test_batch/image_init_2obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
+# python smolvlm_batch_infer_hsv_qlora.py --input ./annotations/annotations_img_init_3obj.jsonl --output ./predictions_3cube/predictions_img_init_3obj_v1.jsonl --image_dir ./image_test_batch/image_init_3obj  --enable_hsv_preprocessing --adapter_path ./output_smolvlm_lora/output_smolvlm_lora_V1
 
 
 

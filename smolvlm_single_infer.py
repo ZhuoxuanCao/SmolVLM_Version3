@@ -125,6 +125,6 @@ python smolvlm_single_infer.py --image ./image_test_single/red_and_blue_0123.jpg
 3cube
 python smolvlm_single_infer.py --image ./image_test_single/pyramid_green_on_red_and_blue_0109.jpg --prompt "This image shows the workspace before a robot arm performs a grasping task. There are exactly three objects in the workspace. Please describe the color of each object and their spatial relationship (for example, whether they are stacked, arranged in a pyramid, or separated, and which one is on top or at the bottom if they are stacked)." --model HuggingFaceTB/SmolVLM-Instruct
 
-python smolvlm_single_infer.py --image ./image_test_single/red_and_green_and_blue_0001.jpg --prompt "  " --model HuggingFaceTB/SmolVLM-Instruct
+python smolvlm_single_infer.py --image ./image_test_single/green_on_blue_on_red_0011.jpg --prompt "There are exactly three cubes in the workspace. Please describe their spatial arrangement in detail. Indicate whether the cubes are stacked, arranged in a pyramid, or separated. And then, for each layer or position, specify the color of the cube(s)." --model HuggingFaceTB/SmolVLM-Instruct
 
 """

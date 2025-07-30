@@ -134,7 +134,7 @@ prompt = "Think step by step, but only answer with a number: How many objects ar
 
 性能不及之前，需要加Lora权重
 
-#### 1.2.2 图像预处理，lora权重V1，自定义参数，SmolVLM-Instruct，prompt2，TTA
+#### 1.2.2 图像预处理，lora权重V1，自定义参数，SmolVLM-Instruct，prompt2，TTA&non TTA
 
 加入了TTA逻辑
 
@@ -154,6 +154,8 @@ prompt = "Think step by step, but only answer with a number: How many objects ar
 |  **red_on_blue**   |         88          |        90        |
 |  **red_on_green**  |         94          |        91        |
 
+说明了TTA在只有两个方块时是有效果的
+
 #### 1.2.4 图像预处理，lora权重V5，自定义参数，SmolVLM-Instruct，prompt2
 
 |                    | **Accuracy** |
@@ -171,6 +173,8 @@ prompt = "Think step by step, but only answer with a number: How many objects ar
 | **red_and_green**  |      99      |
 |  **red_on_blue**   |     91.5     |
 |  **red_on_green**  |     93.5     |
+
+**总的来说V5的效果在两个方块的数量识别上不如V1**
 
 
 
@@ -204,54 +208,54 @@ prompt = "Think step by step, but only answer with a number: How many objects ar
 
 **Acc3**
 
-检测发现，效果并不好
+检测发现，2+1的形式效果并不好，但是剩余的形式效果都更好
 
 #### 2.2.4 检测结果
 
 **2+1摆放模式**
 
-|                                 |                             img                              | Acc1 | **Acc2** | Acc3 |
-| :-----------------------------: | :----------------------------------------------------------: | ---- | :------: | ---- |
-| blue_on_green_and_red_separated | ![blue_on_green_and_red_separated_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\blue_on_green_and_red_separated_0001.jpg) | 100  |   100    | 100  |
-| blue_on_red_and_green_separated | ![blue_on_red_and_green_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\blue_on_red_and_green_separated_0200.jpg) | 98.5 |    97    | 94   |
-| green_on_blue_and_red_separated | ![green_on_blue_and_red_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\green_on_blue_and_red_separated_0200.jpg) | 79.5 |    75    | 69.5 |
-| green_on_red_and_blue_separated | ![green_on_red_and_blue_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\green_on_red_and_blue_separated_0200.jpg) | 100  |   100    | 100  |
-| red_on_blue_and_green_separated | ![red_on_blue_and_green_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_on_blue_and_green_separated_0200.jpg) | 75   |    79    | 75.5 |
-| red_on_green_and_blue_separated | ![red_on_green_and_blue_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_on_green_and_blue_separated_0200.jpg) | 100  |   100    | 100  |
+|                                 |                             img                              | Acc1 | **Acc2** | Acc3     |
+| :-----------------------------: | :----------------------------------------------------------: | ---- | :------: | -------- |
+| blue_on_green_and_red_separated | ![blue_on_green_and_red_separated_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\blue_on_green_and_red_separated_0001.jpg) | 100  |   100    | 100      |
+| blue_on_red_and_green_separated | ![blue_on_red_and_green_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\blue_on_red_and_green_separated_0200.jpg) | 98.5 |    97    | 94       |
+| green_on_blue_and_red_separated | ![green_on_blue_and_red_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\green_on_blue_and_red_separated_0200.jpg) | 79.5 |    75    | **64.5** |
+| green_on_red_and_blue_separated | ![green_on_red_and_blue_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\green_on_red_and_blue_separated_0200.jpg) | 100  |   100    | 100      |
+| red_on_blue_and_green_separated | ![red_on_blue_and_green_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_on_blue_and_green_separated_0200.jpg) | 75   |    79    | 75.5     |
+| red_on_green_and_blue_separated | ![red_on_green_and_blue_separated_0200](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_on_green_and_blue_separated_0200.jpg) | 100  |   100    | 100      |
 
 错误的回答几乎都是2个方块
 
 **金字塔摆放**
 
-|                               |                                                              | Acc1 | Acc2 |
-| ----------------------------- | ------------------------------------------------------------ | ---- | :--: |
-| pyramid_blue_on_green_and_red | ![pyramid_blue_on_green_and_red_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_blue_on_green_and_red_0001.jpg) | 100  | 100  |
-| pyramid_blue_on_red_and_green | ![pyramid_blue_on_red_and_green_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_blue_on_red_and_green_0001.jpg) | 96   |  98  |
-| pyramid_green_on_blue_and_red | ![pyramid_green_on_blue_and_red_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_green_on_blue_and_red_0001.jpg) | 97   | 97.5 |
-| pyramid_green_on_red_and_blue | ![pyramid_green_on_red_and_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_green_on_red_and_blue_0001.jpg) | 94   |  94  |
-| pyramid_red_on_blue_and_green | ![pyramid_red_on_blue_and_green_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_red_on_blue_and_green_0001.jpg) | 100  | 100  |
-| pyramid_red_on_green_and_blue | ![pyramid_red_on_green_and_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_red_on_green_and_blue_0001.jpg) | 99.5 | 98.5 |
+|                               |                                                              | Acc1 | Acc2 | Acc3 |
+| ----------------------------- | ------------------------------------------------------------ | ---- | :--: | ---- |
+| pyramid_blue_on_green_and_red | ![pyramid_blue_on_green_and_red_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_blue_on_green_and_red_0001.jpg) | 100  | 100  | 100  |
+| pyramid_blue_on_red_and_green | ![pyramid_blue_on_red_and_green_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_blue_on_red_and_green_0001.jpg) | 96   |  98  | 100  |
+| pyramid_green_on_blue_and_red | ![pyramid_green_on_blue_and_red_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_green_on_blue_and_red_0001.jpg) | 97   | 97.5 | 100  |
+| pyramid_green_on_red_and_blue | ![pyramid_green_on_red_and_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_green_on_red_and_blue_0001.jpg) | 94   |  94  | 100  |
+| pyramid_red_on_blue_and_green | ![pyramid_red_on_blue_and_green_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_red_on_blue_and_green_0001.jpg) | 100  | 100  | 100  |
+| pyramid_red_on_green_and_blue | ![pyramid_red_on_green_and_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\pyramid_red_on_green_and_blue_0001.jpg) | 99.5 | 98.5 | 98.5 |
 
 错误的回答几乎都是4个方块
 
 **上下堆叠**
 
-|                      |                                                              | Acc1 | Acc2 |
-| :------------------: | :----------------------------------------------------------: | ---- | :--: |
-| blue_on_green_on_red | ![blue_on_green_on_red_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\blue_on_green_on_red_0001.jpg) | 98.5 | 98.5 |
-| blue_on_red_on_green | ![blue_on_red_on_green_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\blue_on_red_on_green_0001.jpg) | 95   | 95.5 |
-| green_on_blue_on_red | ![green_on_blue_on_red_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\green_on_blue_on_red_0001.jpg) | 98   |  98  |
-| green_on_red_on_blue | ![green_on_red_on_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\green_on_red_on_blue_0001.jpg) | 95.5 | 96.5 |
-| red_on_blue_on_green | ![red_on_blue_on_green_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_on_blue_on_green_0001.jpg) | 98.5 |  99  |
-| red_on_green_on_blue | ![red_on_green_on_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_on_green_on_blue_0001.jpg) | 98   |  99  |
+|                      |                                                              | Acc1 | Acc2 | Acc3 |
+| :------------------: | :----------------------------------------------------------: | ---- | :--: | ---- |
+| blue_on_green_on_red | ![blue_on_green_on_red_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\blue_on_green_on_red_0001.jpg) | 98.5 | 98.5 | 97.5 |
+| blue_on_red_on_green | ![blue_on_red_on_green_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\blue_on_red_on_green_0001.jpg) | 95   | 95.5 | 99   |
+| green_on_blue_on_red | ![green_on_blue_on_red_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\green_on_blue_on_red_0001.jpg) | 98   |  98  | 95.5 |
+| green_on_red_on_blue | ![green_on_red_on_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\green_on_red_on_blue_0001.jpg) | 95.5 | 96.5 | 99   |
+| red_on_blue_on_green | ![red_on_blue_on_green_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_on_blue_on_green_0001.jpg) | 98.5 |  99  | 99.5 |
+| red_on_green_on_blue | ![red_on_green_on_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_on_green_on_blue_0001.jpg) | 98   |  99  | 100  |
 
 错误的回答几乎都是4个方块
 
 **分开摆放**
 
-|                        |                                                              | Acc1 | Acc2 |
-| ---------------------- | ------------------------------------------------------------ | ---- | :--: |
-| red_and_green_and_blue | ![red_and_green_and_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_and_green_and_blue_0001.jpg) | 100  | 100  |
+|                        |                                                              | Acc1 | Acc2 | Acc3 |
+| ---------------------- | ------------------------------------------------------------ | ---- | :--: | ---- |
+| red_and_green_and_blue | ![red_and_green_and_blue_0001](E:\LLMs\SmolVLM_Version3\image_test_batch\image_3obj\red_and_green_and_blue_0001.jpg) | 100  | 100  | 100  |
 
 
 
